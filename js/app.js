@@ -5,13 +5,16 @@ class Enemy {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    constructor() {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
         this.sprite = 'images/enemy-bug.png';
     };
     update(dt) {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers. 
+
     };
 
     // Draw the enemy on the screen, required method for game
@@ -22,7 +25,9 @@ class Enemy {
 };
 
 class Player {
-    constructor() {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
         this.player = 'image/char-boy.png';
     };
     handleInput() {
@@ -37,7 +42,7 @@ class Player {
 }
 
 const player = new Player();
-const allEnemies = [];
+let allEnemies = [];
 
 // Now write your own player class
 // This class requires an update(), render() and
