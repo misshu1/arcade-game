@@ -28,7 +28,7 @@ class Player {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.player = 'image/char-boy.png';
+        this.player = 'images/char-boy.png';
     };
     handleInput() {
         //something here
@@ -38,6 +38,8 @@ class Player {
     };
     render() {
         //something here
+        ctx.drawImage(Resources.get(this.player), this.x, this.y);
+
     };
 }
 
