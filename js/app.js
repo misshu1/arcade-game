@@ -21,6 +21,7 @@ class Enemy {
         } else {
             this.x = -100;
         }
+
     };
 
     // Draw the enemy on the screen, required method for game
