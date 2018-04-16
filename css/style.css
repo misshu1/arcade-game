@@ -1,3 +1,21 @@
 body {
     text-align: center;
 }
+
+.container {
+    text-align: right;
+    width: 909px;
+    margin: 2em auto 0 auto;
+    padding: 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.level,
+.enemies,
+.lives {
+    text-align: center;
+}

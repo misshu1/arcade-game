@@ -1,4 +1,21 @@
 'use strict';
+
+// Level count function
+let levels = 0;
+
+function level(count) {
+    levels += count;
+};
+
+
+// Lives tracker
+let lives = 3;
+
+function livesCount(count) {
+    lives -= count;
+};
+
+
 // Enemies our player must avoid
 class Enemy {
     // Variables applied to each of our instances go here,
@@ -12,6 +29,7 @@ class Enemy {
         this.speed = speed;
         this.sprite = 'images/enemy-bug.png';
     };
+
     update(dt) {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
@@ -21,7 +39,16 @@ class Enemy {
         } else {
             this.x = -100;
         }
-
+        // Reset when colide with enemy
+        if (player.x < this.x + 70 && player.x + 60 > this.x && player.y < this.y + 40 && 40 + player.y > this.y) {
+            player.x = 400;
+            player.y = 400;
+            livesCount(1);
+            if (lives === 0) {
+                console.log('dead');
+                // allEnemies = [];
+            }
+        }
     };
 
     // Draw the enemy on the screen, required method for game
@@ -32,20 +59,14 @@ class Enemy {
 };
 
 
-//Level count function
-let levels = 0;
-
-function level(count) {
-    levels += count;
-};
-
-
 class Player {
+
     constructor(x, y) {
         this.x = x;
         this.y = y;
         this.player = 'images/char-boy.png';
     };
+
     handleInput(move) {
         //Player move distance on keypress 
         if (move === 'left' && this.x > 0) {
@@ -60,9 +81,10 @@ class Player {
         if (move === 'down' && this.y < 400) {
             this.y += 83;
         }
-
     };
+
     update() {
+
         //Reset player to start position when moved to the top
         if (this.y < 0) {
             this.x = 400;
@@ -71,7 +93,7 @@ class Player {
         };
 
         // Spawn more enemyes based on level
-        // Set the allEnemies length to a
+        // Limit the allEnemies length
         if (levels === 0 && allEnemies.length === levels) {
             allEnemies.push(enemy1);
         } else if (levels === 1 && allEnemies.length === levels) {
@@ -98,6 +120,8 @@ class Player {
             allEnemies.push(enemy12);
         }
     };
+
+    // Draw the player on the screen
     render() {
         ctx.drawImage(Resources.get(this.player), this.x, this.y);
     }
