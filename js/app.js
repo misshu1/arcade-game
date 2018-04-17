@@ -94,30 +94,39 @@ class Player {
 
         // Spawn more enemyes based on level
         // Limit the allEnemies length
-        if (levels === 0 && allEnemies.length === levels) {
-            allEnemies.push(enemy1);
-        } else if (levels === 1 && allEnemies.length === levels) {
-            allEnemies.push(enemy2);
-        } else if (levels === 2 && allEnemies.length === levels) {
-            allEnemies.push(enemy3);
-        } else if (levels === 3 && allEnemies.length === levels) {
-            allEnemies.push(enemy4);
-        } else if (levels === 4 && allEnemies.length === levels) {
-            allEnemies.push(enemy5);
-        } else if (levels === 5 && allEnemies.length === levels) {
-            allEnemies.push(enemy6);
-        } else if (levels === 6 && allEnemies.length === levels) {
-            allEnemies.push(enemy7);
-        } else if (levels === 7 && allEnemies.length === levels) {
-            allEnemies.push(enemy8);
-        } else if (levels === 8 && allEnemies.length === levels) {
-            allEnemies.push(enemy9);
-        } else if (levels === 9 && allEnemies.length === levels) {
-            allEnemies.push(enemy10);
-        } else if (levels === 10 && allEnemies.length === levels) {
-            allEnemies.push(enemy11);
-        } else if (levels === 11 && allEnemies.length === levels) {
-            allEnemies.push(enemy12);
+        // if (levels === 0 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy1);
+        // } else if (levels === 1 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy2);
+        // } else if (levels === 2 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy3);
+        // } else if (levels === 3 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy4);
+        // } else if (levels === 4 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy5);
+        // } else if (levels === 5 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy6);
+        // } else if (levels === 6 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy7);
+        // } else if (levels === 7 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy8);
+        // } else if (levels === 8 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy9);
+        // } else if (levels === 9 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy10);
+        // } else if (levels === 10 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy11);
+        // } else if (levels === 11 && allEnemies.length === levels) {
+        //     allEnemies.push(enemy12);
+        // }
+
+        let listEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9, enemy10, enemy11, enemy12];
+        for (let i = 0; i <= levels; i++) {
+            if (levels === i && allEnemies.length === levels) {
+                allEnemies.push(listEnemies[i]);
+            } else if (levels >= i) {
+                let numEnemies = (levels >= 12) ? 12 : levels;
+            }
         }
     };
 
@@ -141,7 +150,7 @@ const enemy9 = new Enemy(-100, 62, Math.random() * 770);
 const enemy10 = new Enemy(-100, 145, Math.random() * 810);
 const enemy11 = new Enemy(-100, 62, Math.random() * 740);
 const enemy12 = new Enemy(-100, 228, Math.random() * 630);
-let allEnemies = [];
+const allEnemies = [];
 
 const player = new Player(400, 400);
 
