@@ -18,14 +18,14 @@ function livesCount(count) {
     const livesScore = document.getElementById('lives');
     livesScore.innerText = lives;
     if (lives === 3) {
-        livesScore.innerHTML = `<img src="../images/heart.png" style="width: 20px;height: 30px;">
-        <img src="../images/heart.png" style="width: 20px;height: 30px;">
-        <img src="../images/heart.png" style="width: 20px;height: 30px;">`;
+        livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px;height: 30px;">
+        <img src="images/Heart.png" style="width: 20px;height: 30px;">
+        <img src="images/Heart.png" style="width: 20px;height: 30px;">`;
     } else if (lives === 2) {
-        livesScore.innerHTML = `<img src="../images/heart.png" style="width: 20px;height: 30px;">
-        <img src="../images/heart.png" style="width: 20px;height: 30px;">`;
+        livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px;height: 30px;">
+        <img src="images/Heart.png" style="width: 20px;height: 30px;">`;
     } else if (lives === 1) {
-        livesScore.innerHTML = `<img src="../images/heart.png" style="width: 20px;height: 30px;">`;
+        livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px;height: 30px;">`;
     };
 };
 
@@ -38,7 +38,7 @@ class Enemy {
         this.x = x;
         this.y = y;
         this.speed = speed;
-        this.sprite = '../images/enemy-bug.png';
+        this.sprite = 'images/enemy-bug.png';
     };
 
     update(dt) {
@@ -72,7 +72,7 @@ class Player {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.player = '../images/char-boy.png';
+        this.player = 'images/char-boy.png';
     };
 
     handleInput(move) {
@@ -102,7 +102,7 @@ class Player {
         if (lives === 0) {
             const popUp = `<div class="pop-up">
             <h1>Game Over</h1>
-            <img src="../images/pexels-photo-236229.jpeg" width="300px">
+            <img src="images/pexels-photo-236229.jpeg" width="300px">
             <div class="button" onclick="restart()">Play again!</div>
             </div>`;
             message.innerHTML = popUp;
@@ -110,7 +110,7 @@ class Player {
         } else if (levels === 20) {
             const popUp = `<div class="pop-up">
             <h1>Good Game</h1>
-            <img src="../images/pexels-photo-327533.jpeg" width="300px">
+            <img src="images/pexels-photo-327533.jpeg" width="300px">
             <div class="button" onclick="restart()">Play again!</div>
             </div>`;
             message.innerHTML = popUp;
