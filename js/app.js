@@ -5,6 +5,7 @@
 const message = document.getElementById('popUp');
 const levelScore = document.getElementById('level');
 const enemiesScore = document.getElementById('enemies');
+const livesScore = document.getElementById('lives');
 let levels = 0;
 let lives = 3;
 let allEnemies = [];
@@ -32,7 +33,6 @@ function livesCount(count) {
     lives -= count;
 
     // Display lives icons
-    const livesScore = document.getElementById('lives');
     livesScore.innerText = lives;
     if (lives === 3) {
         livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px;height: 30px;">
@@ -64,6 +64,9 @@ function restart() {
     message.innerHTML = '';
     player.update();
     levelScore.innerText = '0';
+    livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px;height: 30px;">
+    <img src="images/Heart.png" style="width: 20px;height: 30px;">
+    <img src="images/Heart.png" style="width: 20px;height: 30px;">`;
     levels = 0;
     lives = 3;
     enemy1 = new Enemy(-100, 228, Math.random() * 500);
