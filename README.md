@@ -1,5 +1,8 @@
 # Arcade Game
 
+Play the game here https://misshu1.github.io/arcade-game
+
+
 ![screenshot](https://raw.githubusercontent.com/misshu1/arcade-game/master/screenshot.png)
 
 ## Basic Functionality
