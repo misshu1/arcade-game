@@ -1,20 +1,37 @@
 'use strict';
 
-// Level count function
-const message = document.querySelector('#popUp');
-let levels = 0;
 
+// Global variables
+const message = document.getElementById('popUp');
+const levelScore = document.getElementById('level');
+const enemiesScore = document.getElementById('enemies');
+let levels = 0;
+let lives = 3;
+let allEnemies = [];
+
+
+// Level and enemies count function
 function level(count) {
     levels += count;
+
+    // Pop-up message when game is won
+    if (levels === 20) {
+        const popUp = `<div class="pop-up">
+                        <h1>Good Game</h1>
+                        <img src="images/pexels-photo-327533.jpeg" width="300px">
+                        <div class="button" onclick="restart()">Play again!</div>
+                        </div>`;
+        message.innerHTML = popUp;
+        allEnemies = [];
+    }
 };
 
 
 // Lives tracker
-let lives = 3;
-
 function livesCount(count) {
     lives -= count;
-    // Score panel
+
+    // Display lives icons
     const livesScore = document.getElementById('lives');
     livesScore.innerText = lives;
     if (lives === 3) {
@@ -27,6 +44,40 @@ function livesCount(count) {
     } else if (lives === 1) {
         livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px;height: 30px;">`;
     };
+
+    // Pop-up message when game is lost
+    if (lives === 0) {
+        const popUp = `<div class="pop-up">
+                        <h1>Game Over</h1>
+                        <img src="images/pexels-photo-236229.jpeg" width="300px">
+                        <div class="button" onclick="restart()">Play again!</div>
+                        </div>`;
+        message.innerHTML = popUp;
+        allEnemies = [];
+    }
+};
+
+
+// Restart button for pop-up
+function restart() {
+    allEnemies = [];
+    message.innerHTML = '';
+    player.update();
+    levelScore.innerText = '0';
+    levels = 0;
+    lives = 3;
+    enemy1 = new Enemy(-100, 228, Math.random() * 500);
+    enemy2 = new Enemy(-100, 62, Math.random() * 900);
+    enemy3 = new Enemy(-100, 145, Math.random() * 850);
+    enemy4 = new Enemy(-100, 228, Math.random() * 700);
+    enemy5 = new Enemy(-100, 145, Math.random() * 800);
+    enemy6 = new Enemy(-100, 62, Math.random() * 600);
+    enemy7 = new Enemy(-100, 145, Math.random() * 720);
+    enemy8 = new Enemy(-100, 228, Math.random() * 620);
+    enemy9 = new Enemy(-100, 62, Math.random() * 770);
+    enemy10 = new Enemy(-100, 145, Math.random() * 810);
+    enemy11 = new Enemy(-100, 62, Math.random() * 740);
+    enemy12 = new Enemy(-100, 228, Math.random() * 630);
 };
 
 
@@ -59,16 +110,14 @@ class Enemy {
         }
     };
 
-    // Draw the enemy on the screen, required method for game
     render() {
+        // Draw the enemy on the screen, required method for game
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    };
-
+    }
 };
 
 
 class Player {
-
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -92,31 +141,6 @@ class Player {
     };
 
     update() {
-        // Score panel
-        const levelScore = document.getElementById('level');
-        const enemiesScore = document.getElementById('enemies');
-        levelScore.innerText = levels;
-        enemiesScore.innerText = allEnemies.length;
-
-        // Pop-up message when game is over
-        if (lives === 0) {
-            const popUp = `<div class="pop-up">
-            <h1>Game Over</h1>
-            <img src="images/pexels-photo-236229.jpeg" width="300px">
-            <div class="button" onclick="restart()">Play again!</div>
-            </div>`;
-            message.innerHTML = popUp;
-            allEnemies = [];
-        } else if (levels === 20) {
-            const popUp = `<div class="pop-up">
-            <h1>Good Game</h1>
-            <img src="images/pexels-photo-327533.jpeg" width="300px">
-            <div class="button" onclick="restart()">Play again!</div>
-            </div>`;
-            message.innerHTML = popUp;
-            allEnemies = [];
-        };
-
         //Reset player to start position when moved to the top
         if (this.y < 0) {
             this.x = 400;
@@ -136,34 +160,31 @@ class Player {
         }
     };
 
-    // Draw the player on the screen
-    render() {
-        ctx.drawImage(Resources.get(this.player), this.x, this.y);
-    };
 
-    // Restart button for pop-up
-    restart() {
-        allEnemies = [enemy1];
-        message.innerHTML = '';
+    render() {
+        // Draw the player on the screen
+        ctx.drawImage(Resources.get(this.player), this.x, this.y);
+
+        // Score panel
+        levelScore.innerText = levels;
+        enemiesScore.innerText = allEnemies.length;
     }
 };
 
 
 // All Enemyes below
-const enemy1 = new Enemy(-100, 228, Math.random() * 500);
-const enemy2 = new Enemy(-100, 62, Math.random() * 900);
-const enemy3 = new Enemy(-100, 145, Math.random() * 850);
-const enemy4 = new Enemy(-100, 228, Math.random() * 700);
-const enemy5 = new Enemy(-100, 145, Math.random() * 800);
-const enemy6 = new Enemy(-100, 62, Math.random() * 600);
-const enemy7 = new Enemy(-100, 145, Math.random() * 720);
-const enemy8 = new Enemy(-100, 228, Math.random() * 620);
-const enemy9 = new Enemy(-100, 62, Math.random() * 770);
-const enemy10 = new Enemy(-100, 145, Math.random() * 810);
-const enemy11 = new Enemy(-100, 62, Math.random() * 740);
-const enemy12 = new Enemy(-100, 228, Math.random() * 630);
-let allEnemies = [];
-
+let enemy1 = new Enemy(-100, 228, Math.random() * 500);
+let enemy2 = new Enemy(-100, 62, Math.random() * 900);
+let enemy3 = new Enemy(-100, 145, Math.random() * 850);
+let enemy4 = new Enemy(-100, 228, Math.random() * 700);
+let enemy5 = new Enemy(-100, 145, Math.random() * 800);
+let enemy6 = new Enemy(-100, 62, Math.random() * 600);
+let enemy7 = new Enemy(-100, 145, Math.random() * 720);
+let enemy8 = new Enemy(-100, 228, Math.random() * 620);
+let enemy9 = new Enemy(-100, 62, Math.random() * 770);
+let enemy10 = new Enemy(-100, 145, Math.random() * 810);
+let enemy11 = new Enemy(-100, 62, Math.random() * 740);
+let enemy12 = new Enemy(-100, 228, Math.random() * 630);
 const player = new Player(400, 400);
 
 
