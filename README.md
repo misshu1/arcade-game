@@ -1,6 +1,6 @@
 # Arcade Game
 
-![screenshot](../screenshot.png)
+![screenshot](https://raw.githubusercontent.com/misshu1/arcade-game/master/screenshot.png)
 
 ## Basic Functionality
 
