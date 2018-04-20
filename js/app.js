@@ -35,14 +35,14 @@ function livesCount(count) {
     // Display lives icons
     livesScore.innerText = lives;
     if (lives === 3) {
-        livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px;height: 30px;">
+        livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px; height: 30px;">
         <img src="images/Heart.png" style="width: 20px;height: 30px;">
         <img src="images/Heart.png" style="width: 20px;height: 30px;">`;
     } else if (lives === 2) {
-        livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px;height: 30px;">
+        livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px; height: 30px;">
         <img src="images/Heart.png" style="width: 20px;height: 30px;">`;
     } else if (lives === 1) {
-        livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px;height: 30px;">`;
+        livesScore.innerHTML = `<img src="images/Heart.png" style="width: 20px; height: 30px;">`;
     };
 
     // Pop-up message when game is lost
